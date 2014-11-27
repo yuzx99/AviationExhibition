@@ -18,21 +18,11 @@ import android.widget.TabHost;
 
 public class MainActivity extends FragmentActivity {
 
-	private TabHost mTabHost;
-	private TabManager mTabManager;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		setContentView(R.layout.tabs_main);
-		
-		mTabHost = (TabHost)findViewById(android.R.id.tabhost);
-		mTabHost.setup();
-		
-		mTabManager = new TabManager(this, mTabHost, android.R.id.tabcontent);
-		
-		
+		setContentView(R.layout.activity_main);						
 		
 	}
 	
