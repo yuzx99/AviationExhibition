@@ -141,12 +141,15 @@ public class HomepageActivity extends Activity {
 				case MotionEvent.ACTION_DOWN:
 				case MotionEvent.ACTION_MOVE:
 					isContinue = false;
+					mSlideHolder.setEnabled(false);
 					break;
 				case MotionEvent.ACTION_UP:
 					isContinue = true;
+					mSlideHolder.setEnabled(true);
 					break;
 				default:
 					isContinue = true;
+					mSlideHolder.setEnabled(true);
 					break;
 				}
 				return false;
