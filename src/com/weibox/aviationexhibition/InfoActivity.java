@@ -45,8 +45,7 @@ public class InfoActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				mSlideHolder.close();
-				
+				mSlideHolder.close();				
 			}
 		});
 	}

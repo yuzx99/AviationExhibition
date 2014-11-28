@@ -5,49 +5,63 @@
     android:layout_height="fill_parent"
     tools:context=".HomepageActivity" >
 
+    <include layout="@layout/menu" />
+
     <ScrollView
-        android:layout_width="200dp"
+        android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@android:color/black" >
+        android:background="@android:color/white" >
 
         <LinearLayout
-            android:layout_width="200dp"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <Button
-                android:id="@+id/button1"
+            <RelativeLayout
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="主页" />
+                android:layout_height="60dp"
+                android:background="@drawable/bg_banner" >
 
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="资讯" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="距中国XX航空展开幕还有14天"
+                    android:textColor="@android:color/white" />
+            </RelativeLayout>
 
-            <Button
+            <RelativeLayout
                 android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/viewpager"
+                    android:layout_width="fill_parent"
+                    android:layout_height="140dp" >
+                </android.support.v4.view.ViewPager>
+                
+                <LinearLayout
+                    android:id="@+id/viewGroup"
+                    android:layout_below="@id/viewpager"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-25px"
+                    android:gravity="right"
+                    android:orientation="horizontal" >
+                </LinearLayout>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="会展" />
-         
+                android:text="@string/hello_world" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hello_world" />
         </LinearLayout>
     </ScrollView>
-
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:text="Test"
-            android:textSize="25sp" />
-
-    </RelativeLayout>
 
 </com.weibox.aviationexhibition.SlideHolder>
