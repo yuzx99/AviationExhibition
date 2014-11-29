@@ -3,8 +3,12 @@ package com.weibox.aviationexhibition;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import com.weibox.util.Utility;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -29,6 +33,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 public class HomepageActivity extends Activity {
@@ -39,6 +45,9 @@ public class HomepageActivity extends Activity {
 	private ImageView imageView = null;
 	private AtomicInteger what = new AtomicInteger(0);
 	private boolean isContinue = true;
+	// menu
+	private ListView menuListView = null;
+	private List<Map<String, Object>> listItems;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -56,6 +65,7 @@ public class HomepageActivity extends Activity {
 		// }
 		// });
 		initViewPager();
+		initMenu();
 
 		Button btn = (Button) findViewById(R.id.button1);
 		btn.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +95,32 @@ public class HomepageActivity extends Activity {
 
 	}
 
+	public void initMenu() {
+		menuListView = (ListView) findViewById(R.id.list_menu);
+		Integer[] imgIDs = new Integer[] { R.drawable.ic_sidebar_homepage,
+				R.drawable.ic_sidebar_news, R.drawable.ic_sidebar_exhibition,
+				R.drawable.ic_sidebar_message, R.drawable.ic_sidebar_about_us };
+		String[] itemNames = new String[] { getString(R.string.menu_home),
+				getString(R.string.menu_info),
+				getString(R.string.menu_exhibition),
+				getString(R.string.menu_message),
+				getString(R.string.menu_aboutus) };
+
+		listItems = new ArrayList<Map<String, Object>>();
+		for (int i = 0; i < imgIDs.length; i++) {
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("menuImage", imgIDs[i]);
+			map.put("menuText", itemNames[i]);
+			listItems.add(map);
+		}
+
+		SimpleAdapter menuAdapter = new SimpleAdapter(this, listItems,
+				R.layout.menu_item, new String[] { "menuImage", "menuText" },
+				new int[] { R.id.menuImageItem, R.id.menuTextItem });
+		menuListView.setAdapter(menuAdapter);
+		Utility.setListViewHeightBasedOnChildren(menuListView);
+	}
+
 	public void initViewPager() {
 		vPager = (ViewPager) findViewById(R.id.viewpager);
 		ViewGroup vGroup = (ViewGroup) findViewById(R.id.viewGroup);
@@ -95,22 +131,22 @@ public class HomepageActivity extends Activity {
 		Resources res = getResources();
 		ImageView img1 = new ImageView(this);
 		img1.setBackgroundResource(R.drawable.ad3);
-//		img1.setBackgroundDrawable(compressImage(res.getDrawable(R.drawable.test_1)));
+		// img1.setBackgroundDrawable(compressImage(res.getDrawable(R.drawable.test_1)));
 		lPics.add(img1);
 
 		ImageView img2 = new ImageView(this);
 		img2.setBackgroundResource(R.drawable.ad3);
-//		img2.setBackgroundDrawable(compressImage(res.getDrawable(R.drawable.test_2)));
+		// img2.setBackgroundDrawable(compressImage(res.getDrawable(R.drawable.test_2)));
 		lPics.add(img2);
 
 		ImageView img3 = new ImageView(this);
 		img3.setBackgroundResource(R.drawable.ad3);
-//		img3.setBackgroundDrawable(compressImage(res.getDrawable(R.drawable.test_3)));
+		// img3.setBackgroundDrawable(compressImage(res.getDrawable(R.drawable.test_3)));
 		lPics.add(img3);
 
 		ImageView img4 = new ImageView(this);
 		img4.setBackgroundResource(R.drawable.ad3);
-//		img4.setBackgroundDrawable(compressImage(res.getDrawable(R.drawable.test_4)));
+		// img4.setBackgroundDrawable(compressImage(res.getDrawable(R.drawable.test_4)));
 		lPics.add(img4);
 
 		// ¶ÔimageViews½øÐÐÌî³ä
@@ -273,9 +309,9 @@ public class HomepageActivity extends Activity {
 	}
 
 	private Drawable compressImage(Drawable drawable) {
-		BitmapDrawable bd = (BitmapDrawable)drawable;				
+		BitmapDrawable bd = (BitmapDrawable) drawable;
 		Bitmap image = bd.getBitmap();
-		
+
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		image.compress(Bitmap.CompressFormat.JPEG, 100, baos);
 		int options = 100;
@@ -286,11 +322,11 @@ public class HomepageActivity extends Activity {
 		}
 
 		ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
-		Bitmap bitmap = BitmapFactory.decodeStream(bais,null,null);	
-		
+		Bitmap bitmap = BitmapFactory.decodeStream(bais, null, null);
+
 		BitmapDrawable bd2 = new BitmapDrawable(bitmap);
 		Drawable d = (Drawable) bd2;
 		return d;
 	}
-	
+
 }
