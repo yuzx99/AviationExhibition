@@ -31,6 +31,8 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -64,34 +66,8 @@ public class HomepageActivity extends Activity {
 		// mSlideHolder.toggle();
 		// }
 		// });
-		initViewPager();
 		initMenu();
-
-		Button btn = (Button) findViewById(R.id.button1);
-		btn.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				mSlideHolder.close();
-			}
-		});
-
-		Button btn2 = (Button) findViewById(R.id.button2);
-		btn2.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				// Toast.makeText(HomepageActivity.this, "Button",
-				// Toast.LENGTH_LONG).show();
-				Intent intent = new Intent(HomepageActivity.this,
-						InfoActivity.class);
-				startActivity(intent);
-				mSlideHolder.close();
-
-			}
-		});
+		initViewPager();
 
 	}
 
@@ -119,6 +95,50 @@ public class HomepageActivity extends Activity {
 				new int[] { R.id.menuImageItem, R.id.menuTextItem });
 		menuListView.setAdapter(menuAdapter);
 		Utility.setListViewHeightBasedOnChildren(menuListView);
+
+		menuListView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				// 0:home 1:info 2:exhibition 3:message 4:about
+				// TODO Auto-generated method stub
+				Intent intent = null;
+				switch (arg2) {
+				case 0:
+					mSlideHolder.close();
+					break;
+				case 1:
+					intent = new Intent(HomepageActivity.this,
+							InfoActivity.class);
+					startActivity(intent);
+					mSlideHolder.close();
+					break;
+				case 2:
+					intent = new Intent(HomepageActivity.this,
+							ExhibitionActivity.class);
+					startActivity(intent);
+					mSlideHolder.close();
+					break;
+				case 3:
+					intent = new Intent(HomepageActivity.this,
+							MessageActivity.class);
+					startActivity(intent);
+					mSlideHolder.close();
+					break;
+				case 4:
+					intent = new Intent(HomepageActivity.this,
+							AboutusActivity.class);
+					startActivity(intent);
+					mSlideHolder.close();
+					break;
+				default:
+					mSlideHolder.close();
+					break;
+				}
+			}
+
+		});
 	}
 
 	public void initViewPager() {

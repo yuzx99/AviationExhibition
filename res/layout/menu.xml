@@ -41,7 +41,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="7dp"
-                    android:alpha="60"
+                    android:alpha="153"
                     android:text="@string/user_name"
                     android:textColor="#ffffff"
                     android:textSize="10sp" />
@@ -68,22 +68,11 @@
                 android:textSize="11sp" />
         </RelativeLayout>
 
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="主页" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="资讯" />
-
         <ListView
             android:id="@+id/list_menu"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:dividerHeight="0dp" />
     </LinearLayout>
 
 </ScrollView>

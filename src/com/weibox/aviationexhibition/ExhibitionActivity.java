@@ -13,36 +13,27 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class InfoActivity extends Activity {
-	
+public class ExhibitionActivity extends Activity {
+
 	private SlideHolder mSlideHolder;
 	// menu
 	private ListView menuListView = null;
 	private List<Map<String, Object>> listItems;
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		requestWindowFeature(Window.FEATURE_NO_TITLE);		
-		setContentView(R.layout.info);		
-		mSlideHolder = (SlideHolder)findViewById(R.id.slideHolderInfo);
-		
-		View toggleView = findViewById(R.id.textView);
-		toggleView.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				mSlideHolder.toggle();
-			}
-		});
-		
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		setContentView(R.layout.exhibition);
+		mSlideHolder = (SlideHolder) findViewById(R.id.slideHolderExhi);
+
 		initMenu();
 	}
+
 	public void initMenu() {
 		menuListView = (ListView) findViewById(R.id.list_menu);
 		Integer[] imgIDs = new Integer[] { R.drawable.ic_sidebar_homepage,
@@ -77,28 +68,28 @@ public class InfoActivity extends Activity {
 				Intent intent = null;
 				switch (arg2) {
 				case 0:
-					intent = new Intent(InfoActivity.this,
+					intent = new Intent(ExhibitionActivity.this,
 							HomepageActivity.class);
 					startActivity(intent);
 					mSlideHolder.close();
 					break;
-				case 1:					
-					mSlideHolder.close();
-					break;
-				case 2:
-					intent = new Intent(InfoActivity.this,
-							ExhibitionActivity.class);
+				case 1:
+					intent = new Intent(ExhibitionActivity.this,
+							InfoActivity.class);
 					startActivity(intent);
+					mSlideHolder.close();
+					break;	
+				case 2:
 					mSlideHolder.close();
 					break;
 				case 3:
-					intent = new Intent(InfoActivity.this,
+					intent = new Intent(ExhibitionActivity.this,
 							MessageActivity.class);
 					startActivity(intent);
 					mSlideHolder.close();
 					break;
 				case 4:
-					intent = new Intent(InfoActivity.this,
+					intent = new Intent(ExhibitionActivity.this,
 							AboutusActivity.class);
 					startActivity(intent);
 					mSlideHolder.close();

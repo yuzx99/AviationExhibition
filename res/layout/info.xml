@@ -1,6 +1,6 @@
 <com.weibox.aviationexhibition.SlideHolder xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/slideHolder"
+    android:id="@+id/slideHolderInfo"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     tools:context=".InfoActivity" >
