@@ -113,30 +113,34 @@ public class HomepageActivity extends Activity {
 							InfoActivity.class);
 					startActivity(intent);
 					mSlideHolder.close();
+					finish();
 					break;
 				case 2:
 					intent = new Intent(HomepageActivity.this,
 							ExhibitionActivity.class);
 					startActivity(intent);
 					mSlideHolder.close();
+					finish();
 					break;
 				case 3:
 					intent = new Intent(HomepageActivity.this,
 							MessageActivity.class);
 					startActivity(intent);
 					mSlideHolder.close();
+					finish();
 					break;
 				case 4:
 					intent = new Intent(HomepageActivity.this,
-							 AboutusActivity.class);
+							AboutusActivity.class);
 					startActivity(intent);
+					mSlideHolder.close();
 					finish();
-					//mSlideHolder.close();
 					break;
 				default:
 					mSlideHolder.close();
 					break;
 				}
+
 			}
 
 		});

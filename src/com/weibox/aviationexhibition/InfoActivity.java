@@ -81,6 +81,7 @@ public class InfoActivity extends Activity {
 							HomepageActivity.class);
 					startActivity(intent);
 					mSlideHolder.close();
+					finish();
 					break;
 				case 1:					
 					mSlideHolder.close();
@@ -90,23 +91,27 @@ public class InfoActivity extends Activity {
 							ExhibitionActivity.class);
 					startActivity(intent);
 					mSlideHolder.close();
+					finish();
 					break;
 				case 3:
 					intent = new Intent(InfoActivity.this,
 							MessageActivity.class);
 					startActivity(intent);
 					mSlideHolder.close();
+					finish();
 					break;
 				case 4:
 					intent = new Intent(InfoActivity.this,
 							AboutusActivity.class);
 					startActivity(intent);
 					mSlideHolder.close();
+					finish();
 					break;
 				default:
 					mSlideHolder.close();
 					break;
 				}
+
 			}
 
 		});

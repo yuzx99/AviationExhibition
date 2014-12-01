@@ -71,18 +71,21 @@ public class MessageActivity extends Activity {
 							HomepageActivity.class);
 					startActivity(intent);
 					mSlideHolder.close();
+					finish();
 					break;
 				case 1:
 					intent = new Intent(MessageActivity.this,
 							InfoActivity.class);
 					startActivity(intent);
 					mSlideHolder.close();
+					finish();
 					break;
 				case 2:
 					intent = new Intent(MessageActivity.this,
 							ExhibitionActivity.class);
 					startActivity(intent);
 					mSlideHolder.close();
+					finish();
 					break;
 				case 3:
 					mSlideHolder.close();
@@ -92,11 +95,13 @@ public class MessageActivity extends Activity {
 							AboutusActivity.class);
 					startActivity(intent);
 					mSlideHolder.close();
+					finish();
 					break;
 				default:
 					mSlideHolder.close();
 					break;
 				}
+
 			}
 
 		});

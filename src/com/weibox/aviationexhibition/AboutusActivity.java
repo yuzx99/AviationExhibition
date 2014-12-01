@@ -71,24 +71,28 @@ public class AboutusActivity extends Activity {
 							HomepageActivity.class);
 					startActivity(intent);
 					mSlideHolder.close();
+					finish();
 					break;
 				case 1:
 					intent = new Intent(AboutusActivity.this,
 							InfoActivity.class);
 					startActivity(intent);
 					mSlideHolder.close();
+					finish();
 					break;
 				case 2:
 					intent = new Intent(AboutusActivity.this,
 							ExhibitionActivity.class);
 					startActivity(intent);
 					mSlideHolder.close();
+					finish();
 					break;
 				case 3:
 					intent = new Intent(AboutusActivity.this,
 							MessageActivity.class);
 					startActivity(intent);
 					mSlideHolder.close();
+					finish();
 					break;
 				case 4:					
 					mSlideHolder.close();
@@ -96,7 +100,7 @@ public class AboutusActivity extends Activity {
 				default:
 					mSlideHolder.close();
 					break;
-				}
+				}				
 			}
 
 		});

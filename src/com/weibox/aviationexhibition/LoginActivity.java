@@ -76,7 +76,7 @@ public class LoginActivity extends Activity {
 				// TODO Auto-generated method stub
 				if (isValid()) {
 					Intent intent = new Intent(LoginActivity.this,
-							HomepageActivity.class);
+							ProfileActivity.class);
 					startActivity(intent);
 					finish();
 				}
