@@ -4,40 +4,10 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     tools:context=".InfoActivity" >
-<!-- 
-    <ScrollView
-        android:layout_width="200dp"
-        android:layout_height="fill_parent"
-        android:background="@android:color/black" >
 
-        <LinearLayout
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <Button
-                android:id="@+id/button1"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="主页" />
-
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="资讯" />
-
-            <Button
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="会展" />
-         
-        </LinearLayout>
-    </ScrollView>
- -->
  	<include 
  	    layout="@layout/menu" />
- 	"
+ 	
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" >

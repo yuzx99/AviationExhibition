@@ -44,7 +44,7 @@ public class SplashActivity extends Activity {
 		
 	}
 	private void openNextpage(){
-		Intent intent = new Intent(this,HomepageActivity.class);
+		Intent intent = new Intent(this,LoginActivity.class);
 		startActivity(intent);
 		this.finish();
 	}

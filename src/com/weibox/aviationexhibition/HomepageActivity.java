@@ -128,9 +128,10 @@ public class HomepageActivity extends Activity {
 					break;
 				case 4:
 					intent = new Intent(HomepageActivity.this,
-							AboutusActivity.class);
+							 AboutusActivity.class);
 					startActivity(intent);
-					mSlideHolder.close();
+					finish();
+					//mSlideHolder.close();
 					break;
 				default:
 					mSlideHolder.close();
