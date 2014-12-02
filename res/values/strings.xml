@@ -11,4 +11,6 @@
 	<string name="menu_exhibition">会展</string>
 	<string name="menu_message">留言</string>
 	<string name="menu_aboutus">关于我们</string>
+	<string name="test_name">用户ASDF</string>
+	<string name="test_mes_content">第十届中国国际航空航天博览会11月16日顺利闭幕，从战斗机到无人机</string>
 </resources>

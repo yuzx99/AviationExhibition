@@ -23,14 +23,22 @@ public class MessageActivity extends Activity {
 	private ListView menuListView = null;
 	private List<Map<String, Object>> listItems;
 
+	private ListView todayMsgList = null;
+	private ListView ytdMsgList = null;
+	private ListView earlierMsgList = null;
+	private int[] msgItems = new int[] { R.id.msgImageItem,
+			R.id.msgNameItem, R.id.msgContentItem };
+	private String[] msgMapping = new String[] { "user_photo", "user_name",
+			"msg_content" };
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.message);
 		mSlideHolder = (SlideHolder) findViewById(R.id.slideHolderMessage);
-
 		initMenu();
+		initLeaveMessage();
 	}
 
 	public void initMenu() {
@@ -101,9 +109,42 @@ public class MessageActivity extends Activity {
 					mSlideHolder.close();
 					break;
 				}
-
 			}
-
 		});
+	}
+
+	private void initLeaveMessage() {
+		todayMsgList = (ListView) findViewById(R.id.todayMsgList);
+		ytdMsgList = (ListView) findViewById(R.id.ytdMsgList);
+		earlierMsgList = (ListView) findViewById(R.id.earlierMsgList);
+		SimpleAdapter todayAdapter = new SimpleAdapter(this, getLeaveMessage(),
+				R.layout.msg_item, msgMapping, msgItems);
+		todayMsgList.setAdapter(todayAdapter);
+		todayMsgList.setDividerHeight(0);
+		Utility.setListViewHeightBasedOnChildren(todayMsgList);
+		ytdMsgList.setAdapter(todayAdapter);
+		Utility.setListViewHeightBasedOnChildren(ytdMsgList);
+		earlierMsgList.setAdapter(todayAdapter);
+		Utility.setListViewHeightBasedOnChildren(earlierMsgList);
+	}
+
+	private ArrayList<HashMap<String, Object>> getLeaveMessage() {
+		ArrayList<HashMap<String, Object>> listItem = new ArrayList<HashMap<String, Object>>();
+		Integer[] imgIDs = new Integer[] { R.drawable.test_pho,
+				R.drawable.test_pho, R.drawable.test_pho };
+		String[] itemNames = new String[] { getString(R.string.test_name),
+				getString(R.string.test_name), getString(R.string.test_name) };
+		String[] itemContents = new String[] {
+				getString(R.string.test_mes_content),
+				getString(R.string.test_mes_content),
+				getString(R.string.test_mes_content) };
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		for (int i = 0; i < imgIDs.length; i++) {
+			map.put(msgMapping[0], imgIDs[i]);
+			map.put(msgMapping[1], itemNames[i]);
+			map.put(msgMapping[2], itemContents[i]);
+			listItem.add(map);
+		}
+		return listItem;
 	}
 }
