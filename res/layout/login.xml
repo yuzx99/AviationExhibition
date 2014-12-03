@@ -26,7 +26,9 @@
             android:paddingLeft="60dp"
             android:hint="请在此输入您的账号 "
             android:inputType="text"
-            android:textColor="#ffffff" />
+            android:textColor="#ffffff"
+            android:alpha="0.85"
+            android:textCursorDrawable="@drawable/ic_input_box_cursor" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -36,6 +38,7 @@
             android:layout_marginLeft="23dp"
             android:text="账号" 
             android:textColor="#ffffff"
+            android:alpha="0.6"
             android:textSize="16sp"/>
     </RelativeLayout>
 
@@ -53,7 +56,9 @@
             android:paddingLeft="60dp"
             android:hint="请在此输入您的密码"
             android:inputType="textPassword"
-            android:textColor="#ffffff" />
+            android:textColor="#ffffff"
+            android:alpha="0.85"
+            android:textCursorDrawable="@drawable/ic_input_box_cursor" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -63,6 +68,7 @@
             android:layout_marginLeft="23dp"
             android:text="密码" 
             android:textColor="#ffffff"
+            android:alpha="0.6"
             android:textSize="16sp"/>
         
         <ToggleButton
@@ -96,10 +102,10 @@
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:layout_marginLeft="5dp"
-            android:alpha="60"
             android:gravity="center_vertical"
             android:text="下次自动登陆"
             android:textColor="#ffffff"
+            android:alpha="0.6"
             android:textSize="12sp" />
     </LinearLayout>
 
@@ -111,5 +117,6 @@
         android:layout_gravity="center_horizontal"
         android:text="登陆"
         android:textColor="#ffffff"
+        android:alpha="0.85"
         android:textSize="18sp"/>
 </LinearLayout>

@@ -11,8 +11,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.AdapterView.OnItemClickListener;
@@ -26,8 +28,8 @@ public class MessageActivity extends Activity {
 	private ListView todayMsgList = null;
 	private ListView ytdMsgList = null;
 	private ListView earlierMsgList = null;
-	private int[] msgItems = new int[] { R.id.msgImageItem,
-			R.id.msgNameItem, R.id.msgContentItem };
+	private int[] msgItems = new int[] { R.id.msgImageItem, R.id.msgNameItem,
+			R.id.msgContentItem };
 	private String[] msgMapping = new String[] { "user_photo", "user_name",
 			"msg_content" };
 
@@ -126,6 +128,18 @@ public class MessageActivity extends Activity {
 		Utility.setListViewHeightBasedOnChildren(ytdMsgList);
 		earlierMsgList.setAdapter(todayAdapter);
 		Utility.setListViewHeightBasedOnChildren(earlierMsgList);
+
+		ImageButton ibtnLeaveMsg = (ImageButton) findViewById(R.id.ibtnLeaveMsg);
+		ibtnLeaveMsg.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(MessageActivity.this,
+						LeaveMessageActivity.class);
+				startActivity(intent);
+			}
+		});
 	}
 
 	private ArrayList<HashMap<String, Object>> getLeaveMessage() {
