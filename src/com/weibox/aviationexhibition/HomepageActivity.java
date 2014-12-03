@@ -42,6 +42,8 @@ import android.widget.Toast;
 public class HomepageActivity extends Activity {
 	private SlideHolder mSlideHolder;
 	private ViewPager vPager = null;
+	private long waitTime = 3000;
+	private long touchTime = 0;
 	// 装点点的ImageView数组
 	private ImageView[] imageViews = null;
 	private ImageView imageView = null;
@@ -50,6 +52,11 @@ public class HomepageActivity extends Activity {
 	// menu
 	private ListView menuListView = null;
 	private List<Map<String, Object>> listItems;
+
+	private ListView categoryList = null;
+	private ListView infoList = null;
+	private String[] infoMapping = new String[] { "infoPic", "infoTitle" };
+	private int[] itemMapping = new int[] { R.id.infoPicItem, R.id.infoTitle };
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -68,7 +75,7 @@ public class HomepageActivity extends Activity {
 		// });
 		initMenu();
 		initViewPager();
-
+		initInfoList();
 	}
 
 	public void initMenu() {
@@ -333,6 +340,33 @@ public class HomepageActivity extends Activity {
 		}
 	}
 
+	private void initInfoList() {
+		categoryList = (ListView) findViewById(R.id.categoryList);
+		SimpleAdapter cateAdapter = new SimpleAdapter(this, getCategory(),
+				R.layout.info_item, infoMapping, itemMapping);
+		categoryList.setAdapter(cateAdapter);
+		Utility.setListViewHeightBasedOnChildren(categoryList);
+		infoList = (ListView) findViewById(R.id.infoList);
+		infoList.setAdapter(cateAdapter);
+		Utility.setListViewHeightBasedOnChildren(infoList);
+
+	}
+
+	private ArrayList<HashMap<String, Object>> getCategory() {
+		ArrayList<HashMap<String, Object>> listItem = new ArrayList<HashMap<String, Object>>();
+		Integer[] imgIDs = new Integer[] { R.drawable.test_pho,
+				R.drawable.test_pho, R.drawable.test_pho };
+		String[] itemTitle = new String[] { "中国枭龙战机搏击长空", "中国八一跳伞队简介",
+				"中国大飞机低空低速畅通" };
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		for (int i = 0; i < imgIDs.length; i++) {
+			map.put(infoMapping[0], imgIDs[i]);
+			map.put(infoMapping[1], itemTitle[i]);
+			listItem.add(map);
+		}
+		return listItem;
+	}
+
 	private Drawable compressImage(Drawable drawable) {
 		BitmapDrawable bd = (BitmapDrawable) drawable;
 		Bitmap image = bd.getBitmap();
@@ -353,5 +387,17 @@ public class HomepageActivity extends Activity {
 		Drawable d = (Drawable) bd2;
 		return d;
 	}
+	
+	@Override  
+    public void onBackPressed() {  
+        long currentTime = System.currentTimeMillis();  
+        if((currentTime-touchTime)>=waitTime) {  
+            Toast.makeText(this, this.getString(R.string.exit_again), Toast.LENGTH_SHORT).show();  
+            touchTime = currentTime;  
+        }else {  
+          finish(); 
+          System.exit(0);
+        }  
+    } 
 
 }

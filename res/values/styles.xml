@@ -17,4 +17,9 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
+    <!-- 
+    <style name="activityTheme" parent="@android:style/Theme">  
+        <item name="android:windowIsTranslucent">true</item>  
+    </style> 
+     -->
 </resources>

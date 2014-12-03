@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class ProfileActivity extends Activity {
 	private ImageButton ibtnUploadPhoto;
@@ -27,6 +28,8 @@ public class ProfileActivity extends Activity {
 	private Button btnCancel;
 	private Button btnOK;
 
+	private long waitTime = 3000;
+	private long touchTime = 0;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -127,5 +130,18 @@ public class ProfileActivity extends Activity {
 		bitmap = ThumbnailUtils.extractThumbnail(bitmap, width, height,
 				ThumbnailUtils.OPTIONS_RECYCLE_INPUT);
 		return bitmap;
+	}
+	
+	@Override
+	public void onBackPressed() {
+		long currentTime = System.currentTimeMillis();
+		if ((currentTime - touchTime) >= waitTime) {
+			Toast.makeText(this, this.getString(R.string.exit_again),
+					Toast.LENGTH_SHORT).show();
+			touchTime = currentTime;
+		} else {
+			finish();
+			System.exit(0);
+		}
 	}
 }

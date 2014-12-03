@@ -17,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class MessageActivity extends Activity {
@@ -33,6 +34,8 @@ public class MessageActivity extends Activity {
 	private String[] msgMapping = new String[] { "user_photo", "user_name",
 			"msg_content" };
 
+	private long waitTime = 3000;
+	private long touchTime = 0;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -160,5 +163,18 @@ public class MessageActivity extends Activity {
 			listItem.add(map);
 		}
 		return listItem;
+	}
+
+	@Override
+	public void onBackPressed() {
+		long currentTime = System.currentTimeMillis();
+		if ((currentTime - touchTime) >= waitTime) {
+			Toast.makeText(this, this.getString(R.string.exit_again),
+					Toast.LENGTH_SHORT).show();
+			touchTime = currentTime;
+		} else {
+			finish();
+			System.exit(0);
+		}
 	}
 }

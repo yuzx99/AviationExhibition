@@ -13,41 +13,49 @@ import android.widget.LinearLayout;
 public class SplashActivity extends Activity {
 
 	private Timer timer;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-				WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		setFullScreen();
 		setContentView(R.layout.splash);
-		
-		//set advertisement page background
-		LinearLayout llbg = (LinearLayout)findViewById(R.id.splash);
+
+		// set advertisement page background
+		LinearLayout llbg = (LinearLayout) findViewById(R.id.splash);
 		llbg.setBackgroundResource(R.drawable.ad);
 		startTimer();
 	}
-	
-	public void startTimer(){
-		if(timer == null){
+
+	public void startTimer() {
+		if (timer == null) {
 			timer = new Timer();
 			timer.schedule(new FlashTask(), 3000);
 		}
 	}
-	
-	private class FlashTask extends TimerTask{
+
+	private class FlashTask extends TimerTask {
 
 		@Override
 		public void run() {
 			// TODO Auto-generated method stub
 			openNextpage();
 		}
-		
+
 	}
-	private void openNextpage(){
-		Intent intent = new Intent(this,LoginActivity.class);
-		startActivity(intent);
+
+	private void openNextpage() {
+		Intent intent = new Intent(this, LoginActivity.class);
+		startActivity(intent);		
 		this.finish();
 	}
+
+	private void setFullScreen(){
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+				WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,   
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS); 
+	}
+
 }
-
-

@@ -16,33 +16,37 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class InfoActivity extends Activity {
-	
-	private SlideHolder mSlideHolder;
+
 	// menu
+	private SlideHolder mSlideHolder;
 	private ListView menuListView = null;
 	private List<Map<String, Object>> listItems;
-	
+	private long waitTime = 3000;
+	private long touchTime = 0;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		requestWindowFeature(Window.FEATURE_NO_TITLE);		
-		setContentView(R.layout.info);		
-		mSlideHolder = (SlideHolder)findViewById(R.id.slideHolderInfo);
-		
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		setContentView(R.layout.info);
+		mSlideHolder = (SlideHolder) findViewById(R.id.slideHolderInfo);
+
 		View toggleView = findViewById(R.id.textView);
 		toggleView.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				mSlideHolder.toggle();
 			}
 		});
-		
+
 		initMenu();
 	}
+
 	public void initMenu() {
 		menuListView = (ListView) findViewById(R.id.list_menu);
 		Integer[] imgIDs = new Integer[] { R.drawable.ic_sidebar_homepage,
@@ -83,7 +87,7 @@ public class InfoActivity extends Activity {
 					mSlideHolder.close();
 					finish();
 					break;
-				case 1:					
+				case 1:
 					mSlideHolder.close();
 					break;
 				case 2:
@@ -115,5 +119,18 @@ public class InfoActivity extends Activity {
 			}
 
 		});
+	}
+
+	@Override
+	public void onBackPressed() {
+		long currentTime = System.currentTimeMillis();
+		if ((currentTime - touchTime) >= waitTime) {
+			Toast.makeText(this, this.getString(R.string.exit_again),
+					Toast.LENGTH_SHORT).show();
+			touchTime = currentTime;
+		} else {
+			finish();
+			System.exit(0);
+		}
 	}
 }

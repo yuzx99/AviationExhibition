@@ -33,6 +33,7 @@
         android:textCursorDrawable="@drawable/ic_input_box_cursor" />
 
     <Button
+        android:id="@+id/btnSubmitMsg"
         android:layout_width="145dp"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
