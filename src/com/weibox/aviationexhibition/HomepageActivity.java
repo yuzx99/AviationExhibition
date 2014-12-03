@@ -56,7 +56,7 @@ public class HomepageActivity extends Activity {
 	private ListView categoryList = null;
 	private ListView infoList = null;
 	private String[] infoMapping = new String[] { "infoPic", "infoTitle" };
-	private int[] itemMapping = new int[] { R.id.infoPicItem, R.id.infoTitle };
+	private int[] itemMapping = new int[] { R.id.catePicItem, R.id.cateTitle };
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -343,7 +343,7 @@ public class HomepageActivity extends Activity {
 	private void initInfoList() {
 		categoryList = (ListView) findViewById(R.id.categoryList);
 		SimpleAdapter cateAdapter = new SimpleAdapter(this, getCategory(),
-				R.layout.info_item, infoMapping, itemMapping);
+				R.layout.cate_item, infoMapping, itemMapping);
 		categoryList.setAdapter(cateAdapter);
 		Utility.setListViewHeightBasedOnChildren(categoryList);
 		infoList = (ListView) findViewById(R.id.infoList);
