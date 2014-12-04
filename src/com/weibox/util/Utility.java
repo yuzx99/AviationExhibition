@@ -4,6 +4,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class Utility {
     public static void setListViewHeightBasedOnChildren(ListView listView) {
@@ -25,6 +26,8 @@ public class Utility {
         params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
         //listView.getDividerHeight()获取子项间分隔符占用的高度
         //params.height最后得到整个ListView完整显示需要的高度
+        System.out.println(totalHeight);
+        System.out.println(params.height);
         listView.setLayoutParams(params);
     }
  

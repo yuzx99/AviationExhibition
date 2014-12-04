@@ -29,4 +29,9 @@ public class LeaveMessageActivity extends Activity {
 			}
 		});
 	}
+
+	@Override
+	public void onBackPressed() {
+		finish();
+	}
 }

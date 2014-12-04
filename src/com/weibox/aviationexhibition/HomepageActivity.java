@@ -26,6 +26,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
@@ -34,6 +35,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -350,6 +352,17 @@ public class HomepageActivity extends Activity {
 		infoList.setAdapter(cateAdapter);
 		Utility.setListViewHeightBasedOnChildren(infoList);
 
+		ImageButton btnMoreCate = (ImageButton) findViewById(R.id.ibtnMoreCate);
+		btnMoreCate.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(HomepageActivity.this,
+						CategoryActivity.class);
+				startActivity(intent);
+			}
+		});
 	}
 
 	private ArrayList<HashMap<String, Object>> getCategory() {
@@ -358,8 +371,9 @@ public class HomepageActivity extends Activity {
 				R.drawable.test_pho, R.drawable.test_pho };
 		String[] itemTitle = new String[] { "中国枭龙战机搏击长空", "中国八一跳伞队简介",
 				"中国大飞机低空低速畅通" };
-		HashMap<String, Object> map = new HashMap<String, Object>();
+
 		for (int i = 0; i < imgIDs.length; i++) {
+			HashMap<String, Object> map = new HashMap<String, Object>();
 			map.put(infoMapping[0], imgIDs[i]);
 			map.put(infoMapping[1], itemTitle[i]);
 			listItem.add(map);
@@ -387,17 +401,18 @@ public class HomepageActivity extends Activity {
 		Drawable d = (Drawable) bd2;
 		return d;
 	}
-	
-	@Override  
-    public void onBackPressed() {  
-        long currentTime = System.currentTimeMillis();  
-        if((currentTime-touchTime)>=waitTime) {  
-            Toast.makeText(this, this.getString(R.string.exit_again), Toast.LENGTH_SHORT).show();  
-            touchTime = currentTime;  
-        }else {  
-          finish(); 
-          System.exit(0);
-        }  
-    } 
+
+	@Override
+	public void onBackPressed() {
+		long currentTime = System.currentTimeMillis();
+		if ((currentTime - touchTime) >= waitTime) {
+			Toast.makeText(this, this.getString(R.string.exit_again),
+					Toast.LENGTH_SHORT).show();
+			touchTime = currentTime;
+		} else {
+			finish();
+			System.exit(0);
+		}
+	}
 
 }

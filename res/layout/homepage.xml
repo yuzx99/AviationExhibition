@@ -69,6 +69,7 @@
                     android:textSize="18sp" />
                 
                 <ImageButton
+                    android:id="@+id/ibtnMoreCate"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_centerVertical="true"
@@ -101,6 +102,7 @@
                     android:textSize="18sp" />
                 
                 <ImageButton
+                    android:id="@+id/ibtnMoreInfo"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_centerVertical="true"
