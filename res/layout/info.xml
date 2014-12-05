@@ -5,22 +5,47 @@
     android:layout_height="fill_parent"
     tools:context=".InfoActivity" >
 
- 	<include 
- 	    layout="@layout/menu" />
- 	
-    <RelativeLayout
+    <include layout="@layout/menu" />
+
+    <ScrollView
+        android:id="@+id/infoScrollView"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
+        android:layout_height="fill_parent"
+        android:scrollbars="none" >
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:text="Information"
-            android:textSize="25sp" />
+            android:background="#fafafa"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical" >
 
-    </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/bg_banner" >
+
+                <TextView
+                    android:id="@+id/infoPageTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:alpha="0.85"
+                    android:text="资讯"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+
+            <ListView
+                android:id="@+id/infoPageList"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:divider="#c0c0c0"
+                android:dividerHeight="1dp"
+                android:scrollbars="none" />
+        </LinearLayout>
+    </ScrollView>
 
 </com.weibox.aviationexhibition.SlideHolder>
